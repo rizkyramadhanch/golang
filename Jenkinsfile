@@ -5,14 +5,14 @@ peline {
     //         image 'damitj07/go-dep-docker-aws'
     //     }
     // }
-    environment {
-        // VERSION = "${env.BUILD_ID}-${env.GIT_COMMIT}"
-        NAME = "golang"
-        // IMAGE_REPO = "rizkyramadhanch/golang_cilsy"
-        // GIT_URI = "git@bitbucket.org:sample/myapp.git"
-        // BRANCH = "${env.BRANCH_NAME}"
-        // IMAGE = "${IMAGE_REPO}/${NAME}:${VERSION}"
-    }
+    // environment {
+    //     // VERSION = "${env.BUILD_ID}-${env.GIT_COMMIT}"
+    //     NAME = "golang"
+    //     // IMAGE_REPO = "rizkyramadhanch/golang_cilsy"
+    //     // GIT_URI = "git@bitbucket.org:sample/myapp.git"
+    //     // BRANCH = "${env.BRANCH_NAME}"
+    //     // IMAGE = "${IMAGE_REPO}/${NAME}:${VERSION}"
+    // }
     stages {
         stage('Build') {
             steps {
@@ -40,7 +40,7 @@ peline {
             steps {
                 sh 'docker pull rizkyramadhanch/golang_cilsy:$BUILD_NUMBER'
                 sh 'docker rm -f golang'
-                sh 'docker run -dit -p 82:8123 --name ${NAME} rizkyramadhanch/golang_cilsy:$BUILD_NUMBER'
+                sh 'docker run -dit -p 82:8123 --name golang rizkyramadhanch/golang_cilsy:$BUILD_NUMBER'
             }
         }
     }
